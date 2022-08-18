@@ -21,7 +21,7 @@ preprocess.seqz<-function(seg, ploidy0=NULL, chr.in.names=TRUE, outputdir=NULL){
    } else {
   extract<-sequenza.extract(seg, chromosome.list=c(1:24),gamma = 60, kmin = 50)
    }
-  extract.fit<-sequenza::sequenza.fit(extract, N.ratio.filter = 10, N.BAF.filter = 1, segment.filter = 3e6, mufreq.treshold = 0.10, ratio.priority = FALSE,ploidy=ploidy01, mc.cores = 10)
+  extract.fit<-sequenza::sequenza.fit(extract, N.ratio.filter = 10, N.BAF.filter = 1, segment.filter = 3e6, mufreq.treshold = 0.10, ratio.priority = FALSE,ploidy=ploidy01, mc.cores = 1)
   #  sequenza.results(extract, extract.fit, out.dir = getwd(),sample.id =run_name)
 
   seg.tab <- do.call(rbind, extract$segments[extract$chromosomes])
@@ -29,7 +29,8 @@ preprocess.seqz<-function(seg, ploidy0=NULL, chr.in.names=TRUE, outputdir=NULL){
   cint <- get.ci(extract.fit)
   cellularity <- cint$max.cellularity
   ploidy <- cint$max.ploidy
-  avg.depth.ratio <- mean(extract$gc$adj[, 2])
+  #avg.depth.ratio <- mean(extract$gc$adj[, 2])
+  avg.depth.ratio <- extract$avg.depth.ratio
   info_seg<-c(cellularity,ploidy,avg.depth.ratio)
   names(info_seg)<-c("cellularity","ploidy","avg.depth.ratio")
   write.table(t(info_seg),paste0(outputdir,"/",run_name,"_info_seg.txt"),sep="\t",row.names=F)
