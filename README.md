@@ -50,6 +50,7 @@ install_bitbucket('sequenza_tools/sequenza')
 
 Installation
 ------------
+This is a adaptation of the original `scarHRD` R package (https://github.com/sztup/scarHRD). Some modifications have been done.
 
 `scarHRD` can be installed via devtools from github:
 
