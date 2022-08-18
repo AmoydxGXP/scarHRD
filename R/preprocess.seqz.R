@@ -21,7 +21,7 @@ preprocess.seqz<-function(seg, ploidy0=NULL, chr.in.names=TRUE, outputdir=NULL){
    } else {
   extract<-sequenza.extract(seg, chromosome.list=c(1:24),gamma = 60, kmin = 50)
    }
-  extract.fit<-sequenza::sequenza.fit(extract, N.ratio.filter = 10, N.BAF.filter = 1, segment.filter = 3e6, mufreq.treshold = 0.10, ratio.priority = FALSE,ploidy=ploidy01, mc.cores = 1)
+  extract.fit<-sequenza::sequenza.fit(extract, N.ratio.filter = 10, N.BAF.filter = 1, segment.filter = 3e6, mufreq.treshold = 0.10, ratio.priority = FALSE,ploidy=ploidy01, mc.cores = 10)
   #  sequenza.results(extract, extract.fit, out.dir = getwd(),sample.id =run_name)
 
   seg.tab <- do.call(rbind, extract$segments[extract$chromosomes])
@@ -38,7 +38,7 @@ preprocess.seqz<-function(seg, ploidy0=NULL, chr.in.names=TRUE, outputdir=NULL){
                                    sd.ratio = seg.tab$sd.ratio, weight.ratio = seg.len, sd.Bf = seg.tab$sd.BAF,
                                    weight.Bf = 1, ratio.priority = FALSE, CNn = 2)
   seg.tab$CN <- allele.cn[,1]
-  allele.cn <- as.data.table(allele.cn)
+  allele.cn <- as.data.frame(allele.cn)
   #Making imput file
   seg <- data.frame(SampleID = as.character(run_name), Chromosome = seg.tab$chromosome, Start_position = seg.tab$start.pos,
                     End_position = seg.tab$end.pos, Nprobes = 1, total_cn = allele.cn$CNt, A_cn = allele.cn$B,
