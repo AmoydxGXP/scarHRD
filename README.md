@@ -20,6 +20,7 @@ scarHRD R package Manual
 
 Introduction
 ============
+This is a adaptation of the original `scarHRD` R package (https://github.com/sztup/scarHRD). Some modifications have been done.
 
 `scarHRD` is an R package which determines the levels of homologous recombination deficiency (telomeric allelic imbalance, loss off heterozygosity, number of large-scale transitions) based on NGS (WES, WGS) data.
 
@@ -50,7 +51,6 @@ install_bitbucket('sequenza_tools/sequenza')
 
 Installation
 ------------
-This is a adaptation of the original `scarHRD` R package (https://github.com/sztup/scarHRD). Some modifications have been done.
 
 `scarHRD` can be installed via devtools from github:
 
