@@ -56,7 +56,7 @@ Installation
 
 ``` r
 library(devtools)
-install_github('sztup/scarHRD',build_vignettes = TRUE)
+install_github('AmoydxGXP/scarHRD',build_vignettes = TRUE)
 ```
 
 Running on GRCh38
